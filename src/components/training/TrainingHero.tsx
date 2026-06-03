@@ -1,0 +1,27 @@
+const TrainingHero = () => {
+  return (
+    <section className="pt-40 pb-28 bg-gradient-to-b from-white to-slate-50">
+      <div className="max-w-7xl mx-auto px-6 text-center">
+
+        <span className="uppercase tracking-[0.3em] text-sm font-semibold text-[var(--accent)]">
+          Training & Internship
+        </span>
+
+        <h1 className="mt-6 text-5xl md:text-7xl font-extrabold tracking-tight">
+          Learn. Build. Grow.
+          <br />
+          Launch Your Career.
+        </h1>
+
+        <p className="mt-8 max-w-3xl mx-auto text-lg text-slate-600 leading-8">
+          Industry-focused training programs, internships,
+          real projects and mentorship designed to make
+          students job-ready.
+        </p>
+
+      </div>
+    </section>
+  );
+};
+
+export default TrainingHero;
