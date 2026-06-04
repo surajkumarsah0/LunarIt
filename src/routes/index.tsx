@@ -8,7 +8,7 @@ import StatsSection from '#/components/landingpage/StatsSection'
 import TeamSection from '#/components/landingpage/TeamSection'
 import TestimonialSection from '#/components/landingpage/TestimonialSection'
 import TrainingSection from '#/components/landingpage/TrainingSection'
-import WhyChooseUs from '#/components/services/WhyChooseUs'
+import WhyChooseUs from '#/components/landingpage/WhyChooseUs'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({ component: Home })

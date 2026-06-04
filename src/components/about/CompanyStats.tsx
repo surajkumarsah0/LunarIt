@@ -15,7 +15,7 @@ const CompanyStats = () => {
 
           {stats.map(([number, label]) => (
             <div key={label} className="text-center">
-              <h3 className="text-6xl font-black text-[var(--accent)]">
+              <h3 className="text-6xl font-black text-[var(--outline)]">
                 {number}
               </h3>
 

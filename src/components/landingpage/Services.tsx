@@ -52,6 +52,7 @@ const ServicesPage = () => {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-red-500/10 blur-3xl rounded-full"></div>
 
         <div className="max-w-7xl mx-auto px-6 text-center">
+          
 
           <span className="text-[var(--accent)] font-semibold uppercase tracking-wider">
             Our Services
@@ -71,7 +72,10 @@ const ServicesPage = () => {
       </section>
 
       {/* SERVICES GRID */}
-      <section className="py-28">
+      <section className="py-28 relative overflow-hidden">
+        <div className="absolute top-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 left-20 w-96 h-96 bg-red-500/10 rounded-full blur-3xl"></div>
+        
         <div className="max-w-7xl mx-auto px-6">
 
           <div className="text-center max-w-3xl mx-auto">
@@ -82,6 +86,7 @@ const ServicesPage = () => {
               Complete IT solutions tailored for startups,
               businesses and enterprises.
             </p>
+      
           </div>
 
           {/* Cards */}
@@ -96,6 +101,7 @@ const ServicesPage = () => {
                   className="
                   group
                   relative
+                  overflow-hidden
                   p-8
                   rounded-3xl
                   bg-white/60
@@ -135,7 +141,9 @@ const ServicesPage = () => {
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-28 bg-[var(--primary-dark)] text-white">
+      <section className="py-28 bg-[var(--primary-dark)] text-white relative overflow-hidden">
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/20 blur-3xl rounded-full"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-red-500/10 blur-3xl rounded-full"></div>
         <div className="max-w-5xl mx-auto text-center px-6">
 
           <h2 className="text-4xl md:text-5xl font-extrabold">

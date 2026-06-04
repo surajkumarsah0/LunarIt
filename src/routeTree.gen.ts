@@ -12,10 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TrainingRouteImport } from './routes/training'
 import { Route as ServiceRouteImport } from './routes/service'
 import { Route as HomeRouteImport } from './routes/home'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CareerRouteImport } from './routes/career'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CoursedetailsSlagRouteImport } from './routes/coursedetails.$slag'
+import { Route as CareerJobRouteImport } from './routes/career/job'
+import { Route as CareerInternshipRouteImport } from './routes/career/internship'
 
 const TrainingRoute = TrainingRouteImport.update({
   id: '/training',
@@ -30,6 +34,11 @@ const ServiceRoute = ServiceRouteImport.update({
 const HomeRoute = HomeRouteImport.update({
   id: '/home',
   path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -52,34 +61,61 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CoursedetailsSlagRoute = CoursedetailsSlagRouteImport.update({
+  id: '/coursedetails/$slag',
+  path: '/coursedetails/$slag',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareerJobRoute = CareerJobRouteImport.update({
+  id: '/job',
+  path: '/job',
+  getParentRoute: () => CareerRoute,
+} as any)
+const CareerInternshipRoute = CareerInternshipRouteImport.update({
+  id: '/internship',
+  path: '/internship',
+  getParentRoute: () => CareerRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/career': typeof CareerRoute
+  '/career': typeof CareerRouteWithChildren
   '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
   '/home': typeof HomeRoute
   '/service': typeof ServiceRoute
   '/training': typeof TrainingRoute
+  '/career/internship': typeof CareerInternshipRoute
+  '/career/job': typeof CareerJobRoute
+  '/coursedetails/$slag': typeof CoursedetailsSlagRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/career': typeof CareerRoute
+  '/career': typeof CareerRouteWithChildren
   '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
   '/home': typeof HomeRoute
   '/service': typeof ServiceRoute
   '/training': typeof TrainingRoute
+  '/career/internship': typeof CareerInternshipRoute
+  '/career/job': typeof CareerJobRoute
+  '/coursedetails/$slag': typeof CoursedetailsSlagRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/career': typeof CareerRoute
+  '/career': typeof CareerRouteWithChildren
   '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
   '/home': typeof HomeRoute
   '/service': typeof ServiceRoute
   '/training': typeof TrainingRoute
+  '/career/internship': typeof CareerInternshipRoute
+  '/career/job': typeof CareerJobRoute
+  '/coursedetails/$slag': typeof CoursedetailsSlagRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -88,37 +124,51 @@ export interface FileRouteTypes {
     | '/about'
     | '/career'
     | '/contact'
+    | '/gallery'
     | '/home'
     | '/service'
     | '/training'
+    | '/career/internship'
+    | '/career/job'
+    | '/coursedetails/$slag'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/career'
     | '/contact'
+    | '/gallery'
     | '/home'
     | '/service'
     | '/training'
+    | '/career/internship'
+    | '/career/job'
+    | '/coursedetails/$slag'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/career'
     | '/contact'
+    | '/gallery'
     | '/home'
     | '/service'
     | '/training'
+    | '/career/internship'
+    | '/career/job'
+    | '/coursedetails/$slag'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  CareerRoute: typeof CareerRoute
+  CareerRoute: typeof CareerRouteWithChildren
   ContactRoute: typeof ContactRoute
+  GalleryRoute: typeof GalleryRoute
   HomeRoute: typeof HomeRoute
   ServiceRoute: typeof ServiceRoute
   TrainingRoute: typeof TrainingRoute
+  CoursedetailsSlagRoute: typeof CoursedetailsSlagRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -142,6 +192,13 @@ declare module '@tanstack/react-router' {
       path: '/home'
       fullPath: '/home'
       preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -172,17 +229,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/coursedetails/$slag': {
+      id: '/coursedetails/$slag'
+      path: '/coursedetails/$slag'
+      fullPath: '/coursedetails/$slag'
+      preLoaderRoute: typeof CoursedetailsSlagRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/career/job': {
+      id: '/career/job'
+      path: '/job'
+      fullPath: '/career/job'
+      preLoaderRoute: typeof CareerJobRouteImport
+      parentRoute: typeof CareerRoute
+    }
+    '/career/internship': {
+      id: '/career/internship'
+      path: '/internship'
+      fullPath: '/career/internship'
+      preLoaderRoute: typeof CareerInternshipRouteImport
+      parentRoute: typeof CareerRoute
+    }
   }
 }
+
+interface CareerRouteChildren {
+  CareerInternshipRoute: typeof CareerInternshipRoute
+  CareerJobRoute: typeof CareerJobRoute
+}
+
+const CareerRouteChildren: CareerRouteChildren = {
+  CareerInternshipRoute: CareerInternshipRoute,
+  CareerJobRoute: CareerJobRoute,
+}
+
+const CareerRouteWithChildren =
+  CareerRoute._addFileChildren(CareerRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  CareerRoute: CareerRoute,
+  CareerRoute: CareerRouteWithChildren,
   ContactRoute: ContactRoute,
+  GalleryRoute: GalleryRoute,
   HomeRoute: HomeRoute,
   ServiceRoute: ServiceRoute,
   TrainingRoute: TrainingRoute,
+  CoursedetailsSlagRoute: CoursedetailsSlagRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

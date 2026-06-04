@@ -21,8 +21,6 @@ function RouteComponent() {
       <TrainingPrograms />
       <TechnologyStack />
       <IndustriesSection />
-      <WhyChooseUs />
-      <ServicesCTA />
     </div>
   )
 }

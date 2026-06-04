@@ -17,7 +17,7 @@ export const Route = createFileRoute('/home')({
 
 function RouteComponent() {
   return (
-    <div>
+    <div className="">
       <Hero />
       <StatsSection />
       <WhyChooseUs />
