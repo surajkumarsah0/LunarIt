@@ -19,7 +19,6 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CareerRouteImport } from './routes/career'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as CoursedetailsSlagRouteImport } from './routes/coursedetails.$slag'
 
 const TrainingRoute = TrainingRouteImport.update({
   id: '/training',
@@ -71,11 +70,6 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CoursedetailsSlagRoute = CoursedetailsSlagRouteImport.update({
-  id: '/coursedetails/$slag',
-  path: '/coursedetails/$slag',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -88,7 +82,6 @@ export interface FileRoutesByFullPath {
   '/job': typeof JobRoute
   '/service': typeof ServiceRoute
   '/training': typeof TrainingRoute
-  '/coursedetails/$slag': typeof CoursedetailsSlagRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -101,7 +94,6 @@ export interface FileRoutesByTo {
   '/job': typeof JobRoute
   '/service': typeof ServiceRoute
   '/training': typeof TrainingRoute
-  '/coursedetails/$slag': typeof CoursedetailsSlagRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -115,7 +107,6 @@ export interface FileRoutesById {
   '/job': typeof JobRoute
   '/service': typeof ServiceRoute
   '/training': typeof TrainingRoute
-  '/coursedetails/$slag': typeof CoursedetailsSlagRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -130,7 +121,6 @@ export interface FileRouteTypes {
     | '/job'
     | '/service'
     | '/training'
-    | '/coursedetails/$slag'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -143,7 +133,6 @@ export interface FileRouteTypes {
     | '/job'
     | '/service'
     | '/training'
-    | '/coursedetails/$slag'
   id:
     | '__root__'
     | '/'
@@ -156,7 +145,6 @@ export interface FileRouteTypes {
     | '/job'
     | '/service'
     | '/training'
-    | '/coursedetails/$slag'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -170,7 +158,6 @@ export interface RootRouteChildren {
   JobRoute: typeof JobRoute
   ServiceRoute: typeof ServiceRoute
   TrainingRoute: typeof TrainingRoute
-  CoursedetailsSlagRoute: typeof CoursedetailsSlagRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -245,13 +232,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/coursedetails/$slag': {
-      id: '/coursedetails/$slag'
-      path: '/coursedetails/$slag'
-      fullPath: '/coursedetails/$slag'
-      preLoaderRoute: typeof CoursedetailsSlagRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -266,7 +246,6 @@ const rootRouteChildren: RootRouteChildren = {
   JobRoute: JobRoute,
   ServiceRoute: ServiceRoute,
   TrainingRoute: TrainingRoute,
-  CoursedetailsSlagRoute: CoursedetailsSlagRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
