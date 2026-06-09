@@ -16,7 +16,7 @@ function RouteComponent() {
       <TrainingHero />
       <TrainingPrograms />
       <LearningJourney />
-      <EnrollmentProcess />
+      {/* <EnrollmentProcess /> */}
       <TestimonialSection />
       <FAQSection />
     </div>

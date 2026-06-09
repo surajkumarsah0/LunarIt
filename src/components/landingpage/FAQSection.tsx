@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Plus } from "lucide-react";
+import React, { useState } from "react";
+import { Contact, Plus } from "lucide-react";
+import ContactCTA from "./ContactCTA";
 
 const faqs = [
   {
@@ -35,149 +36,103 @@ const faqs = [
 ];
 
 const FAQSection = () => {
-  const [active, setActive] = useState<number | null>(0);
+  const [active, setActive] = useState(0);
 
   return (
-    <section className="py-32 bg-white">
+    <section className="relative pt-10 pb-16 bg-white overflow-hidden antialiased">
+      {/* Structural Accent Top Lighting Layer */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[var(--primary)]/5 blur-3xl rounded-full pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
+        
+        {/* Centered Topic Header Area */}
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 animate-[fadeInUp_0.6s_ease-out_forwards]">
+          
+          {/* Integrated Pulsing Indicator Tag */}
+          <div className="flex items-center justify-center gap-2 mb-3.5">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--accent)]"></span>
+            </span>
+            <span className="text-[var(--accent)] font-semibold uppercase tracking-wider text-xs sm:text-sm">
+              Frequently Asked Questions
+            </span>
+          </div>
 
-        <div className="text-center max-w-3xl mx-auto">
-          <span
-            className="
-            uppercase
-            tracking-[0.3em]
-            text-[var(--accent)]
-            text-sm
-            font-semibold
-            "
-          >
-            Frequently Asked Questions
-          </span>
-
-          <h2
-            className="
-            mt-4
-            text-4xl
-            md:text-5xl
-            font-extrabold
-            tracking-tight
-            "
-          >
-            Have Questions?
-            <br />
-            We Have Answers.
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight leading-tight text-slate-900">
+            Have Questions? We Have{" "}
+            <span className="relative inline-block whitespace-nowrap px-1">
+              <span className="font-['Caveat',_cursive] text-[1.25em] font-semibold text-[var(--accent)] italic relative z-10 tracking-normal">
+                Answers.
+              </span>
+              <span className="absolute -bottom-1 left-0 w-full h-2.5 text-[var(--accent)] opacity-85 pointer-events-none select-none z-0">
+                <svg
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                  className="w-full h-full fill-none stroke-current stroke-[2.5px] stroke-linecap-round stroke-linejoin-round"
+                >
+                  <path d="M3,7 C20,2 40,3 60,5 C75,6.5 87,8 97,4 C92,7 65,9 40,8 C20,7 6,5 4,4" />
+                </svg>
+              </span>
+            </span>
           </h2>
 
-          <p
-            className="
-            mt-6
-            text-lg
-            text-slate-600
-            leading-8
-            "
-          >
-            Find answers to the most common questions about
-            our services, training programs, internships and
-            software development process.
+          <p className="mt-4 text-slate-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-normal">
+            Find answers to the most common questions about our services, training programs, internships and software development process.
           </p>
         </div>
 
-        {/* FAQ Grid */}
-
-        <div className="grid lg:grid-cols-2 gap-6 mt-20">
+        {/* FAQ Dynamic Panels Grid Layout */}
+        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 mt-12 md:mt-16 items-start">
           {faqs.map((faq, index) => {
             const isOpen = active === index;
 
             return (
               <div
                 key={index}
-                className="
-                border
-                border-slate-200
-                rounded-3xl
-                overflow-hidden
-
-                hover:border-[var(--primary)]
-                hover:shadow-lg
-
-                transition-all
-                duration-300
-                "
+                className={`
+                border rounded-3xl overflow-hidden bg-white transition-all duration-300 group
+                ${
+                  isOpen
+                    ? "border-[var(--primary)] shadow-xl shadow-slate-100/80 ring-1 ring-[var(--primary)]/10"
+                    : "border-slate-200/80 hover:border-slate-300 hover:shadow-lg hover:shadow-slate-50"
+                }
+                `}
               >
                 <button
-                  onClick={() =>
-                    setActive(isOpen ? null : index)
-                  }
-                  className="
-                  w-full
-
-                  flex
-                  items-center
-                  justify-between
-
-                  p-7
-
-                  text-left
-                  "
+                  onClick={() => setActive(isOpen ? null : index)}
+                  className="w-full flex items-center justify-between p-6 sm:p-7 text-left gap-4"
                 >
-                  <h3
-                    className="
-                    text-lg
-                    font-bold
-                    pr-5
-                    "
-                  >
+                  <h3 className={`text-base sm:text-lg font-bold tracking-tight transition-colors duration-200 ${isOpen ? "text-[var(--primary)]" : "text-slate-800"}`}>
                     {faq.question}
                   </h3>
 
                   <div
                     className={`
-                    flex
-                    items-center
-                    justify-center
-
-                    w-10
-                    h-10
-
-                    rounded-full
-
-                    transition-all
-                    duration-300
-
+                    flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full shrink-0 transition-all duration-300
                     ${
                       isOpen
                         ? "bg-[var(--primary)] text-white rotate-45"
-                        : "bg-slate-100"
+                        : "bg-slate-50 text-slate-500 group-hover:bg-slate-100 group-hover:text-slate-800"
                     }
                     `}
                   >
-                    <Plus size={18} />
+                    <Plus size={16} className="sm:w-[18px] sm:h-[18px]" />
                   </div>
                 </button>
 
                 <div
                   className={`
-                  transition-all
-                  duration-500
-                  overflow-hidden
-
-                  ${
-                    isOpen
-                      ? "max-h-96 opacity-100"
-                      : "max-h-0 opacity-0"
-                  }
+                  transition-[max-height,opacity] duration-300 ease-in-out overflow-hidden
+                  ${isOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"}
                   `}
                 >
-                  <div className="px-7 pb-7">
-                    <p
-                      className="
-                      text-slate-600
-                      leading-8
-                      "
-                    >
-                      {faq.answer}
-                    </p>
+                  <div className="px-6 pb-6 sm:px-7 sm:pb-7">
+                    <div className="border-t border-slate-100 pt-4">
+                      <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed font-normal">
+                        {faq.answer}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -185,52 +140,9 @@ const FAQSection = () => {
           })}
         </div>
 
-        {/* Bottom CTA */}
+        {/* Bottom Immersive High-Impact CTA Block */}
+      <ContactCTA />
 
-        <div
-          className="
-          mt-20
-
-          rounded-3xl
-
-          bg-[var(--primary-dark)]
-
-          p-10
-
-          text-center
-          text-white
-          "
-        >
-          <h3 className="text-3xl font-bold">
-            Still Have Questions?
-          </h3>
-
-          <p className="mt-4 text-slate-300">
-            Our team is ready to help you with your
-            project, training or business requirements.
-          </p>
-
-          <button
-            className="
-            mt-8
-
-            px-8
-            py-4
-
-            rounded-xl
-
-            bg-[var(--accent)]
-
-            font-semibold
-
-            hover:opacity-90
-
-            transition
-            "
-          >
-            Contact Our Team
-          </button>
-        </div>
       </div>
     </section>
   );

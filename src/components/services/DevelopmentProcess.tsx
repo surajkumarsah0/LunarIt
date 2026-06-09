@@ -72,31 +72,51 @@ export default function DevelopmentProcess() {
     refs.current.forEach((el) => el && observer.observe(el));
     return () => observer.disconnect();
   }, []);
-
   return (
-    <section className="py-20 md:py-24 bg-slate-50 overflow-hidden">
+    <section className="pb-4 md:py-10 bg-slate-50 overflow-hidden antialiased">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-        {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
-          <span className="uppercase tracking-[0.3em] text-sm font-semibold text-[var(--accent)]">
-            Our Process
-          </span>
+        {/* HEADER AREA */}
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          
+           <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--accent)]"></span>
+            </span>
+            <span className="text-[var(--accent)] font-semibold uppercase tracking-wider text-xs sm:text-sm">
+              Our Process
+            </span>
+          </div>
 
-          <h2 className="mt-4 text-3xl md:text-6xl font-extrabold">
-            From Idea To Deployment
+          <h2 className="mt-3 text-xl md:text-3xl font-extrabold tracking-tight text-slate-900 leading-tight">
+            From Idea To{" "}
+            <span className="relative inline-block whitespace-nowrap px-1">
+              <span className="font-['Caveat',_cursive] text-[1.1em] font-semibold text-[var(--accent)] italic relative z-10 tracking-normal">
+                Deployment
+              </span>
+              <span className="absolute -bottom-1.5 left-0 w-full h-2.5 text-[var(--accent)] opacity-85 pointer-events-none select-none z-0">
+                <svg
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                  className="w-full h-full fill-none stroke-current stroke-[2.5px] stroke-linecap-round stroke-linejoin-round"
+                >
+                  <path d="M3,7 C20,2 40,3 60,5 C75,6.5 87,8 97,4 C92,7 65,9 40,8 C20,7 6,5 4,4" />
+                </svg>
+              </span>
+            </span>
           </h2>
 
-          <p className="mt-6 text-base md:text-lg text-slate-600 leading-7 md:leading-8">
+          <p className="mt-4 text-xs sm:text-sm md:text-base text-slate-600 max-w-xl mx-auto leading-relaxed">
             A structured process that transforms ideas into scalable digital products.
           </p>
         </div>
 
-        {/* TIMELINE */}
+        {/* TIMELINE TRACK */}
         <div className="relative">
 
-          {/* CURVED LINE (LEFT MOBILE + CENTER DESKTOP) */}
-          <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 h-full">
+          {/* CURVED TIMELINE LINE (PERFECTLY PRESERVED) */}
+          <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 h-full pointer-events-none select-none z-0">
             <svg
               className="h-full w-[70px] md:w-[120px]"
               viewBox="0 0 120 1000"
@@ -117,8 +137,8 @@ export default function DevelopmentProcess() {
             </svg>
           </div>
 
-          <div className="space-y-12 md:space-y-20">
-
+          {/* TIMELINE STEPS */}
+          <div className="space-y-10 md:space-y-14 relative z-10">
             {processSteps.map((step, index) => {
               const Icon = step.icon;
               const isEven = index % 2 === 0;
@@ -132,7 +152,7 @@ export default function DevelopmentProcess() {
                   className="relative flex md:items-center justify-end"
                 >
 
-                  {/* CARD */}
+                  {/* DOWNSIZED COMPACT CARD CONTAINER */}
                   <div
                     className={`
                       w-[80%] sm:w-[70%] md:w-[42%]
@@ -142,48 +162,51 @@ export default function DevelopmentProcess() {
                   >
                     <div
                       className={`
-                        bg-white rounded-3xl border p-5 md:p-8
+                        bg-white rounded-2xl border p-5
                         transition-all duration-300
-                        hover:shadow-xl
-                        ${isActive ? "border-[var(--primary)] shadow-lg scale-[1.02]" : "border-slate-200"}
+                        hover:shadow-lg
+                        ${isActive ? "border-[var(--primary)] shadow-md scale-[1.01]" : "border-slate-200/80"}
                       `}
                     >
-                      <div className="flex items-center gap-3 md:gap-4">
+                      {/* Compact Inner Content Elements */}
+                      <div className="flex items-center gap-3">
                         <div
                           className={`
-                            w-10 h-10 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition
+                            w-9 h-9 md:w-11 md:h-11 rounded-xl flex items-center justify-center transition-colors duration-300 shrink-0
                             ${isActive
                               ? "bg-[var(--primary)] text-white"
                               : "bg-[var(--primary)]/10 text-[var(--primary)]"
                             }
                           `}
                         >
-                          <Icon size={20} className="md:size-[24px]" />
+                          <Icon size={18} className="md:size-[20px]" />
                         </div>
 
-                        <h3 className="text-lg md:text-2xl font-bold">
+                        {/* Downscaled Core Typography Headers */}
+                        <h3 className="text-base md:text-lg font-bold text-slate-900 tracking-tight">
                           {step.title}
                         </h3>
                       </div>
 
-                      <p className="mt-3 md:mt-5 text-sm md:text-base text-slate-600 leading-6 md:leading-8">
+                      {/* Compact Supporting Body Copy */}
+                      <p className="mt-2.5 text-slate-600 text-xs md:text-sm leading-relaxed font-normal">
                         {step.description}
                       </p>
                     </div>
                   </div>
 
-                  {/* NUMBER (NOW MOBILE + DESKTOP) */}
+                  {/* ROUND NUMBER TIMELINE NODE (PERFECTLY PRESERVED DESIGN) */}
                   <div
                     className={`
                       absolute left-2 md:left-1/2 md:-translate-x-1/2
                       flex items-center justify-center
-                      font-bold shadow-md border-2 border-white transition-all
+                      font-bold shadow-md border-2 border-white transition-all duration-300 rounded-full select-none
 
-                      w-7 h-7 text-xs rounded-full
-                      md:w-20 md:h-20 md:text-xl md:border-8
+                      w-7 h-7 text-xs
+                      md:w-14 md:h-14 md:text-base md:border-[5px]
 
                       ${isActive
-                        ? "bg-[var(--primary)] text-white scale-110"
+                        ? "bg-[var(--primary)] text-white scale-110 shadow-md"
                         : "bg-slate-200 text-slate-700"
                       }
                     `}
@@ -194,8 +217,8 @@ export default function DevelopmentProcess() {
                 </div>
               );
             })}
-
           </div>
+
         </div>
       </div>
     </section>

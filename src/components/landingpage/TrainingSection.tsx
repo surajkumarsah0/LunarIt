@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 
 const TrainingSection = () => {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-10 bg-white relative overflow-hidden">
 
       {/* background glow */}
       <div className="absolute top-10 left-10 w-80 h-80 bg-[var(--primary)]/10 blur-3xl rounded-full"></div>

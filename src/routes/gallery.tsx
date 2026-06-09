@@ -6,11 +6,6 @@ export const Route = createFileRoute('/gallery')({
   component: RouteComponent,
 })
 
-
-
-
-
-
 const galleryImages = [
   {
     src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
@@ -43,35 +38,53 @@ const galleryImages = [
     desc: "Building scalable software solutions for global clients.",
   },
 ];
-function RouteComponent() {
 
+function RouteComponent() {
   const [selected, setSelected] = useState<null | typeof galleryImages[0]>(null);
 
   return (
-    <section className="py-32 bg-slate-50">
+    <section className="py-24 md:py-20 bg-slate-50 text-slate-900 antialiased border-t border-slate-200/60">
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* ================= HEADER ================= */}
+        {/* ================= HEADER BLOCK ================= */}
+        <div className="text-center max-w-2xl mx-auto">
+          {/* Accent Micro Badge */}
+             <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--accent)]"></span>
+            </span>
+            <span className="text-[var(--accent)] font-semibold uppercase tracking-wider text-xs sm:text-sm">
+              Gallery
+            </span>
+          </div>
 
-        <div className="text-center max-w-3xl mx-auto">
-          <span className="uppercase tracking-[0.35em] text-[var(--accent)] text-sm font-semibold">
-            Our Culture
-          </span>
-
-          <h2 className="mt-5 text-5xl md:text-6xl font-extrabold">
-            Life at Our Company
+          {/* Scaled Responsive Headings + Hand-Drawn Underline Element */}
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-tight">
+            Life at Our{" "}
+            <span className="relative inline-block whitespace-nowrap px-1">
+              <span className="font-['Caveat',_cursive] text-[1.05em] font-semibold text-[var(--accent)] italic relative z-10 tracking-normal">
+                Company
+              </span>
+              <span className="absolute -bottom-1 left-0 w-full h-2.5 text-[var(--accent)] opacity-85 pointer-events-none select-none z-0">
+                <svg
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                  className="w-full h-full fill-none stroke-current stroke-[2.5px] stroke-linecap-round stroke-linejoin-round"
+                >
+                  <path d="M3,7 C20,2 40,3 60,5 C75,6.5 87,8 97,4 C92,7 65,9 40,8 C20,7 6,5 4,4" />
+                </svg>
+              </span>
+            </span>
           </h2>
 
-          <p className="mt-6 text-slate-600 leading-8">
-            A glimpse into our workspace, team culture, events, and how we build
-            impactful digital solutions together.
+          <p className="mt-4 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-md mx-auto font-normal">
+            A glimpse into our workspace, team culture, events, and how we build impactful digital solutions together.
           </p>
         </div>
 
         {/* ================= GALLERY GRID ================= */}
-
-        <div className="mt-24 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
+        <div className="mt-12 md:mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {galleryImages.map((img, i) => (
             <div
               key={i}
@@ -80,121 +93,126 @@ function RouteComponent() {
                 group
                 relative
                 overflow-hidden
-                rounded-3xl
+                rounded-2xl
                 cursor-pointer
-                bg-black
+                bg-slate-950
                 aspect-[4/3]
+                border
+                border-slate-200/40
+                shadow-sm
               "
             >
-
-              {/* IMAGE */}
+              {/* IMAGE ELEMENT */}
               <img
-                src={img.src}
+                src={`${img.src}?q=80&w=800&auto=format&fit=crop`}
                 alt={img.title}
+                loading="lazy"
                 className="
                   w-full h-full
                   object-cover
-                  group-hover:scale-110
-                  transition duration-700
-                  opacity-90
-                  group-hover:opacity-70
+                  scale-[1.01]
+                  group-hover:scale-105
+                  transition-all duration-500 ease-out
+                  opacity-95
+                  group-hover:opacity-40
                 "
               />
 
-              {/* OVERLAY */}
+              {/* GRADIENT SHADING OVERLAY */}
               <div className="
                 absolute inset-0
-                bg-gradient-to-t from-black/80 via-black/30 to-transparent
+                bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent
                 opacity-0 group-hover:opacity-100
-                transition
+                transition-opacity duration-300 pointer-events-none
               " />
 
-              {/* TEXT */}
-              <div className="
-                absolute bottom-5 left-5 right-5
-                text-white
-                opacity-0 group-hover:opacity-100
-                transition
-              ">
-
-                <h3 className="text-xl font-bold">
-                  {img.title}
-                </h3>
-
-                <p className="text-sm text-white/70 mt-2">
-                  {img.desc}
-                </p>
-
+              {/* ACTION CALLOUT INDICATOR */}
+              <div className="absolute top-4 left-4 p-1.5 rounded-lg bg-white/10 text-white opacity-0 group-hover:opacity-100 backdrop-blur-md transition-all duration-300 transform -translate-x-2 group-hover:translate-x-0">
+                <ArrowUpRight size={16} />
               </div>
 
-              {/* NUMBER */}
+              {/* CHRONOLOGICAL INDEX NUMBER */}
               <div className="
-                absolute top-4 right-4
-                text-white/30
-                text-4xl font-black
+                absolute top-3 right-4
+                text-slate-950/10 group-hover:text-white/10
+                text-3xl font-black
+                transition-colors duration-300
+                select-none pointer-events-none
               ">
-                0{i + 1}
+                {String(i + 1).padStart(2, "0")}
+              </div>
+
+              {/* FLOATING CAPTION MATRIX */}
+              <div className="
+                absolute bottom-0 left-0 right-0 p-5
+                text-white transform translate-y-2 group-hover:translate-y-0
+                opacity-0 group-hover:opacity-100
+                transition-all duration-300 ease-out
+              ">
+                <h3 className="text-sm sm:text-base font-bold tracking-tight">
+                  {img.title}
+                </h3>
+                <p className="text-[11px] sm:text-xs text-white/70 mt-1.5 leading-relaxed font-normal line-clamp-2">
+                  {img.desc}
+                </p>
               </div>
 
             </div>
           ))}
-
         </div>
 
-        {/* ================= MODAL ================= */}
-
+        {/* ================= LIGHTBOX INTERACTIVE MODAL ================= */}
         {selected && (
           <div
             className="
               fixed inset-0
-              bg-black/90
+              bg-slate-950/90
+              backdrop-blur-sm
               flex items-center justify-center
               z-50
-              p-6
+              p-4 sm:p-6
             "
             onClick={() => setSelected(null)}
           >
-
             <div
-              className="
-                relative
-                max-w-5xl w-full
-              "
+              className="relative max-w-4xl w-full flex flex-col items-center"
               onClick={(e) => e.stopPropagation()}
             >
-
-              {/* CLOSE BUTTON */}
+              {/* STICKY DISMISS TRACE TRIGGER */}
               <button
                 onClick={() => setSelected(null)}
                 className="
-                  absolute -top-12 right-0
-                  text-white
-                  hover:text-red-400
-                  transition
+                  absolute -top-10 right-0 sm:right-4
+                  text-white/70
+                  hover:text-white
+                  p-1
+                  transition-colors duration-200
                 "
+                aria-label="Close modal dialog"
               >
-                <X size={32} />
+                <X size={24} />
               </button>
 
-              {/* IMAGE */}
+              {/* FULL SCALE PREVIEW MEDIA */}
               <img
-                src={selected.src}
+                src={`${selected.src}?q=90&w=1600&auto=format&fit=crop`}
                 alt={selected.title}
                 className="
                   w-full
-                  max-h-[80vh]
+                  max-h-[70vh]
                   object-contain
-                  rounded-2xl
+                  rounded-xl
+                  shadow-2xl
+                  bg-slate-900
                 "
               />
 
-              {/* DESCRIPTION */}
-              <div className="text-center mt-6 text-white">
-                <h3 className="text-2xl font-bold">
+              {/* EXPANDED DETAILS FOLLOWER BOX */}
+              <div className="text-center mt-4 max-w-xl px-2">
+                <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
                   {selected.title}
                 </h3>
-
-                <p className="text-white/70 mt-2">
+                <p className="text-xs text-white/60 mt-1 leading-relaxed font-normal">
                   {selected.desc}
                 </p>
               </div>
@@ -206,6 +224,4 @@ function RouteComponent() {
       </div>
     </section>
   );
-};
-
-
+}

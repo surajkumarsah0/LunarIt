@@ -1,180 +1,189 @@
-import { Target, Eye } from "lucide-react";
+import React from "react";
+import { Target, Eye, GraduationCap } from "lucide-react";
+import { FaExclamation } from "react-icons/fa";
 
-const values = [
-  "Innovation",
-  "Excellence",
-  "Integrity",
-  "Growth",
+// Robust dataset featuring unique product text definitions
+const coreValues = [
+  {
+    title: "Innovation",
+    desc: "Pioneering state-of-the-art technological pathways to constantly stay ahead of digital engineering trends."
+  },
+  {
+    title: "Excellence",
+    desc: "Maintaining relentless attention to high architectural design parameters and bug-free code deployments."
+  },
+  {
+    title: "Integrity",
+    desc: "Cultivating profound corporate transparency, architectural security, and dependable customer relationships."
+  },
+  {
+    title: "Growth",
+    desc: "Empowering organizational scalability and continuous professional development across all global layers."
+  }
 ];
 
 const MissionVisionCore = () => {
   return (
-    <section className="py-32 bg-[var(--primary-dark)] text-white relative overflow-hidden">
+    <section className="py-10 md:py-20 bg-[var(--primary-dark)] text-white relative overflow-hidden antialiased">
 
-      {/* background glow (same as training section style) */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-[var(--accent)] rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500 rounded-full blur-[140px]" />
+      {/* BACKGROUND GRAPHIC GLOW */}
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
+        <div className="absolute -top-40 -left-40 w-[400px] h-[400px] bg-[var(--accent)] rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-blue-600 rounded-full blur-[120px]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
 
-        {/* ================= HEADER ================= */}
-
+        {/* ================= HEADER BLOCK ================= */}
         <div className="text-center max-w-3xl mx-auto">
-          <span className="uppercase tracking-[0.35em] text-[var(--accent)] text-xs font-semibold">
-            Foundation
-          </span>
+          {/* Badge Indicator */}
+           <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--accent)]"></span>
+            </span>
+            <span className="text-[var(--accent)] font-semibold uppercase tracking-wider text-xs sm:text-sm">
+             foundation
+            </span>
+          </div>
 
-          <h2 className="mt-6 text-5xl md:text-7xl font-extrabold tracking-tight">
-            Mission • Vision • Values
+          {/* Typography Scale Downsizing & Premium Underline */}
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight leading-tight">
+            Mission • Vision •{" "}
+            <span className="relative inline-block whitespace-nowrap px-1">
+              <span className="font-['Caveat',_cursive] text-[1.05em] font-semibold text-[var(--accent)] italic relative z-10 tracking-normal">
+                Values
+              </span>
+              <span className="absolute -bottom-1 left-0 w-full h-2.5 text-[var(--accent)] opacity-85 pointer-events-none select-none z-0">
+                <svg
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                  className="w-full h-full fill-none stroke-current stroke-[2.5px] stroke-linecap-round stroke-linejoin-round"
+                >
+                  <path d="M3,7 C20,2 40,3 60,5 C75,6.5 87,8 97,4 C92,7 65,9 40,8 C20,7 6,5 4,4" />
+                </svg>
+              </span>
+            </span>
           </h2>
 
-          <p className="mt-6 text-white/60 text-lg leading-8">
-            The principles that define our identity, purpose, and long-term direction.
+          {/* Micro-Copy Subtext Frame */}
+          <p className="mt-4 text-xs sm:text-sm text-white/70 max-w-xl mx-auto leading-relaxed font-normal">
+            The foundational principles that explicitly define our corporate identity, purpose, and long-term tech architecture trajectory.
           </p>
         </div>
 
-        {/* ================= TIMELINE ================= */}
+        {/* ================= TIMELINE MATRIX ================= */}
+        <div className="relative mt-16 md:mt-20">
 
-        <div className="relative mt-28">
-
-          {/* CENTER LINE */}
+          {/* CENTER ARCHITECTURAL TIMELINE LINE */}
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2" />
 
-          <div className="space-y-24">
+          <div className="space-y-12">
 
-            {/* ================= MISSION ================= */}
-
+            {/* ================= 01: MISSION BLOCK ================= */}
             <div className="relative flex md:justify-start justify-center">
-
-              <div className="w-full md:w-[40%] group relative">
-
+              <div className="w-full md:w-[42%] group relative bg-white/5 border border-white/5 rounded-2xl p-6 backdrop-blur-sm transition-all duration-300 hover:border-white/10">
+                
                 {/* BIG NUMBER BACKGROUND */}
-                <div className="absolute -top-14 -left-8 text-8xl font-black text-white/5 group-hover:text-[var(--accent)]/10 transition">
+                <div className="absolute top-4 right-6 text-5xl font-black text-white/5 group-hover:text-[var(--accent)]/10 transition-colors duration-300 select-none pointer-events-none">
                   01
                 </div>
 
-                <div className="flex items-start gap-5">
-
-                  <Target size={40} className="text-[var(--accent)] mt-1" />
-
+                <div className="flex items-start gap-4">
+                  <Target size={28} className="text-[var(--accent)] shrink-0 mt-0.5" />
                   <div>
-                    <h3 className="text-3xl font-bold group-hover:text-[var(--accent)] transition">
+                    <h3 className="text-lg font-bold group-hover:text-[var(--accent)] transition-colors duration-300">
                       Our Mission
                     </h3>
-
-                    <p className="mt-5 text-white/60 leading-8">
-                      Deliver innovative technology solutions that empower businesses
-                      and individuals to achieve sustainable growth through modern
-                      digital transformation and engineering excellence.
+                    <p className="mt-2 text-xs sm:text-sm text-white/70 leading-relaxed font-normal">
+                      Deliver innovative technology solutions that empower businesses and individuals to achieve sustainable growth through modern digital transformation and engineering excellence.
                     </p>
                   </div>
-
                 </div>
-
-                {/* underline */}
-                <div className="mt-6 h-px w-0 bg-[var(--accent)] group-hover:w-full transition-all duration-500" />
-
               </div>
 
-              {/* CENTER NODE */}
-              <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[var(--accent)] text-black font-bold items-center justify-center border-8 border-[var(--primary-dark)] shadow-lg">
+              {/* CENTER HUB NODE */}
+              <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-6 w-10 h-10 rounded-full bg-[var(--accent)] text-black text-xs font-bold items-center justify-center border-4 border-[var(--primary-dark)] shadow-md select-none pointer-events-none">
                 01
               </div>
-
             </div>
 
-            {/* ================= VISION ================= */}
-
+            {/* ================= 02: VISION BLOCK ================= */}
             <div className="relative flex md:justify-end justify-center">
-
-              <div className="w-full md:w-[40%] group relative">
-
+              <div className="w-full md:w-[42%] group relative bg-white/5 border border-white/5 rounded-2xl p-6 backdrop-blur-sm transition-all duration-300 hover:border-white/10">
+                
                 {/* BIG NUMBER BACKGROUND */}
-                <div className="absolute -top-14 -right-8 text-8xl font-black text-white/5 group-hover:text-[var(--accent)]/10 transition">
+                <div className="absolute top-4 right-6 md:right-auto md:left-6 text-5xl font-black text-white/5 group-hover:text-[var(--accent)]/10 transition-colors duration-300 select-none pointer-events-none">
                   02
                 </div>
 
-                <div className="flex items-start gap-5 md:flex-row-reverse">
-
-                  <Eye size={40} className="text-[var(--accent)] mt-1" />
-
+                <div className="flex items-start gap-4 md:flex-row-reverse">
+                  <Eye size={28} className="text-[var(--accent)] shrink-0 mt-0.5" />
                   <div className="md:text-right">
-                    <h3 className="text-3xl font-bold group-hover:text-[var(--accent)] transition">
+                    <h3 className="text-lg font-bold group-hover:text-[var(--accent)] transition-colors duration-300">
                       Our Vision
                     </h3>
-
-                    <p className="mt-5 text-white/60 leading-8">
-                      Become a globally recognized technology company known for innovation,
-                      excellence, and impactful digital transformation across industries.
+                    <p className="mt-2 text-xs sm:text-sm text-white/70 leading-relaxed font-normal">
+                      Become a globally recognized technology company known for continuous integration, product innovation, and highly impactful software architecture deployments across enterprise markets.
                     </p>
                   </div>
-
                 </div>
-
-                {/* underline */}
-                <div className="mt-6 h-px w-0 bg-[var(--accent)] group-hover:w-full transition-all duration-500 md:ml-auto" />
-
               </div>
 
-              {/* CENTER NODE */}
-              <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[var(--accent)] text-black font-bold items-center justify-center border-8 border-[var(--primary-dark)] shadow-lg">
+              {/* CENTER HUB NODE */}
+              <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-6 w-10 h-10 rounded-full bg-[var(--accent)] text-black text-xs font-bold items-center justify-center border-4 border-[var(--primary-dark)] shadow-md select-none pointer-events-none">
                 02
               </div>
-
             </div>
 
-            {/* ================= VALUES ================= */}
-
-            {values.map((value, index) => {
+            {/* ================= 03+: VALUE ARRAY ITERATIONS ================= */}
+            {coreValues.map((value, index) => {
               const isLeft = index % 2 === 0;
+              const displayNum = String(index + 3).padStart(2, "0");
 
               return (
                 <div
-                  key={value}
-                  className={`relative flex ${
-                    isLeft ? "md:justify-start" : "md:justify-end"
-                  } justify-center`}
+                  key={value.title}
+                  className={`relative flex ${isLeft ? "md:justify-start" : "md:justify-end"} justify-center`}
                 >
-
-                  <div className="w-full md:w-[40%] group relative">
+                  <div className="w-full md:w-[42%] group relative bg-white/5 border border-white/5 rounded-2xl p-6 backdrop-blur-sm transition-all duration-300 hover:border-white/10">
 
                     {/* BIG BACKGROUND NUMBER */}
                     <div
                       className={`
                         absolute
-                        -top-14
-                        ${isLeft ? "-left-8" : "-right-8"}
-                        text-8xl
+                        top-4
+                        ${isLeft ? "right-6" : "right-6 md:right-auto md:left-6"}
+                        text-5xl
                         font-black
                         text-white/5
                         group-hover:text-[var(--accent)]/10
-                        transition
+                        transition-colors
+                        duration-300
+                        select-none
+                        pointer-events-none
                       `}
                     >
-                      0{index + 3}
+                      {displayNum}
+                    </div>
+                          <GraduationCap size={28} className="text-[var(--accent)] shrink-0 mt-0.5"/>
+                    <div className={`flex items-start gap-4 ${!isLeft ? "md:flex-row-reverse" : ""}`}>
+                      <div className={`w-full ${!isLeft ? "md:text-right" : ""}`}>
+                        <h3 className="text-lg font-bold group-hover:text-[var(--accent)] transition-colors duration-300">
+                          {value.title}
+                        </h3>
+                        <p className="mt-2 text-xs sm:text-sm text-white/70 leading-relaxed font-normal">
+                          {value.desc}
+                        </p>
+                      </div>
                     </div>
 
-                    <h3 className="text-3xl font-bold group-hover:text-[var(--accent)] transition">
-                      {value}
-                    </h3>
-
-                    <p className="mt-5 text-white/60 leading-8">
-                      A core principle that shapes our culture, decisions,
-                      and long-term vision as a technology company.
-                    </p>
-
-                    {/* underline */}
-                    <div className="mt-6 h-px w-0 bg-[var(--accent)] group-hover:w-full transition-all duration-500" />
-
                   </div>
 
-                  {/* CENTER NODE */}
-                  <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[var(--accent)] text-black font-bold items-center justify-center border-8 border-[var(--primary-dark)] shadow-lg">
-                    {String(index + 3).padStart(2, "0")}
+                  {/* CENTER HUB NODE */}
+                  <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-6 w-10 h-10 rounded-full bg-[var(--accent)] text-black text-xs font-bold items-center justify-center border-4 border-[var(--primary-dark)] shadow-md select-none pointer-events-none">
+                    {displayNum}
                   </div>
-
                 </div>
               );
             })}
@@ -182,41 +191,7 @@ const MissionVisionCore = () => {
           </div>
         </div>
 
-        {/* ================= CTA ================= */}
-
-        <div className="
-          mt-32
-          bg-white/5
-          border border-white/10
-          backdrop-blur-xl
-          rounded-[36px]
-          p-12 md:p-16
-          text-center
-        ">
-
-          <h3 className="text-4xl md:text-5xl font-extrabold">
-            Let’s Build Something Great Together
-          </h3>
-
-          <p className="mt-6 text-white/60 max-w-2xl mx-auto leading-8">
-            Join us in building innovative digital solutions that create real-world impact
-            through engineering excellence and modern technology.
-          </p>
-
-          <button className="
-            mt-10
-            px-8 py-4
-            bg-[var(--accent)]
-            text-black
-            font-semibold
-            rounded-full
-            hover:scale-105
-            transition
-          ">
-            Get Started
-          </button>
-
-        </div>
+     
 
       </div>
     </section>

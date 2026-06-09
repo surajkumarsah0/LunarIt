@@ -6,242 +6,208 @@ export const Route = createFileRoute('/contact')({
 })
 
 function RouteComponent() {
-  return <div className="bg-slate-50">
+  return (
+    <div className="bg-slate-50 text-slate-900 antialiased">
 
-      {/* ================= HERO ================= */}
-
-      <section className="pt-40 pb-24">
+      {/* ================= HERO SECTION ================= */}
+      <section className="py-16 md:py-20 border-b border-slate-200/60 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto px-6 text-center">
+ <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--accent)]"></span>
+            </span>
+            <span className="text-[var(--accent)] font-semibold uppercase tracking-wider text-xs sm:text-sm">
+              Contact Us
+            </span>
+          </div>
 
-          <span className="uppercase tracking-[0.3em] text-[var(--accent)] text-sm font-semibold">
-            Contact Us
-          </span>
-
-          <h1 className="mt-5 text-5xl md:text-7xl font-extrabold tracking-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 leading-[1.2]">
             Let's Build Something
             <br />
-            Extraordinary Together
+            <span className="relative inline-block whitespace-nowrap px-1 mt-1">
+              <span className="font-['Caveat',_cursive] text-[1.05em] font-semibold text-[var(--accent)] italic relative z-10 tracking-normal">
+                Extraordinary
+              </span>
+              <span className="absolute -bottom-1 left-0 w-full h-2.5 text-[var(--accent)] opacity-85 pointer-events-none select-none z-0">
+                <svg
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                  className="w-full h-full fill-none stroke-current stroke-[2.5px] stroke-linecap-round stroke-linejoin-round"
+                >
+                  <path d="M3,7 C20,2 40,3 60,5 C75,6.5 87,8 97,4 C92,7 65,9 40,8 C20,7 6,5 4,4" />
+                </svg>
+              </span>
+            </span>{" "}
+            Together
           </h1>
 
-          <p className="max-w-3xl mx-auto mt-8 text-lg text-slate-600 leading-8">
-            Whether you need software development,
-            AI solutions, corporate training or IT
-            consultation, our team is ready to help.
+          <p className="max-w-xl mx-auto mt-5 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+            Whether you need software development, AI solutions, corporate training or IT consultation, our team is ready to step in and execute.
           </p>
 
         </div>
       </section>
 
-      {/* ================= CONTACT AREA ================= */}
-
-      <section className="pb-28">
+      {/* ================= CONTACT CORE AREA ================= */}
+      <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-3 gap-6 items-start">
 
-          <div className="grid lg:grid-cols-3 gap-10">
-
-            {/* LEFT SIDE */}
-
-            <div
-              className="
-              bg-[var(--primary-dark)]
-              text-white
-              rounded-3xl
-              p-10
-              "
-            >
-              <h2 className="text-3xl font-extrabold">
+            {/* LEFT SIDE: DIRECT SPECIFICATIONS METRIC PANEL */}
+            <div className="bg-slate-900 text-white rounded-2xl p-6 md:p-8 border border-slate-800 shadow-sm">
+              <h2 className="text-lg md:text-xl font-bold tracking-tight">
                 Lunar IT Solution
               </h2>
 
-              <p className="mt-5 text-slate-300 leading-8">
-                Empowering businesses through innovative
-                software solutions, AI technologies and
-                professional IT services.
+              <p className="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+                Empowering modern businesses through innovative software solutions, production AI technologies, and expert IT execution tracks.
               </p>
 
-              <div className="space-y-8 mt-12">
+              <hr className="my-6 border-slate-800" />
 
-                <div className="flex gap-4">
-                  <Mail className="text-[var(--accent)]" />
+              <div className="space-y-5">
+                <div className="flex gap-3.5 items-start">
+                  <Mail size={16} className="text-[var(--accent)] mt-0.5 shrink-0" />
                   <div>
-                    <h4 className="font-semibold">
-                      Email
-                    </h4>
-                    <p className="text-slate-300">
-                      info@lunarit.com
-                    </p>
+                    <h4 className="text-xs font-semibold text-slate-200">Email Contact</h4>
+                    <p className="text-xs sm:text-sm text-slate-400 font-normal mt-0.5">lunaritsolution2016@gmail.com</p>
                   </div>
                 </div>
 
-                <div className="flex gap-4">
-                  <Phone className="text-[var(--accent)]" />
+                <div className="flex gap-3.5 items-start">
+                  <Phone size={16} className="text-[var(--accent)] mt-0.5 shrink-0" />
                   <div>
-                    <h4 className="font-semibold">
-                      Phone
-                    </h4>
-                    <p className="text-slate-300">
-                      +977 98XXXXXXXX
-                    </p>
+                    <h4 className="text-xs font-semibold text-slate-200">Phone Gateway</h4>
+                    <p className="text-xs sm:text-sm text-slate-400 font-normal mt-0.5">+977 9842230020</p>
                   </div>
                 </div>
 
-                <div className="flex gap-4">
-                  <MapPin className="text-[var(--accent)]" />
+                <div className="flex gap-3.5 items-start">
+                  <MapPin size={16} className="text-[var(--accent)] mt-0.5 shrink-0" />
                   <div>
-                    <h4 className="font-semibold">
-                      Office
-                    </h4>
-                    <p className="text-slate-300">
-                      Kathmandu, Nepal
-                    </p>
+                    <h4 className="text-xs font-semibold text-slate-200">HQ Office</h4>
+                    <p className="text-xs sm:text-sm text-slate-400 font-normal mt-0.5">Itahari, Sunsari</p>
                   </div>
                 </div>
 
-                <div className="flex gap-4">
-                  <Clock className="text-[var(--accent)]" />
+                <div className="flex gap-3.5 items-start">
+                  <Clock size={16} className="text-[var(--accent)] mt-0.5 shrink-0" />
                   <div>
-                    <h4 className="font-semibold">
-                      Working Hours
-                    </h4>
-                    <p className="text-slate-300">
-                      Sunday - Friday
-                    </p>
-                    <p className="text-slate-300">
-                      9:00 AM - 6:00 PM
-                    </p>
+                    <h4 className="text-xs font-semibold text-slate-200">Operations Window</h4>
+                    <p className="text-xs sm:text-sm text-slate-400 font-normal mt-0.5">Sunday – Friday</p>
+                    <p className="text-xs text-slate-500 font-normal mt-0.5">10:00 AM – 5:00 PM</p>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-14 bg-white/10 rounded-2xl p-6">
-                <h3 className="font-bold">
-                  Free Consultation
-                </h3>
-
-                <p className="mt-3 text-slate-300">
-                  Schedule a free consultation and
-                  discuss your project requirements.
-                </p>
+              <div className="mt-8 pt-5 border-t border-slate-800 bg-white/[0.02] -mx-6 -mb-6 p-6 rounded-b-2xl">
+               
               </div>
             </div>
 
-            {/* RIGHT FORM */}
-
-            <div className="lg:col-span-2 bg-white rounded-3xl shadow-lg p-10">
-
-              <div className="mb-10">
-
-                <span className="uppercase tracking-[0.2em] text-[var(--accent)] text-sm font-semibold">
+            {/* RIGHT SIDE:  FORM CONTAINER */}
+            <div className="lg:col-span-2 bg-white rounded-2xl border border-slate-200/60 shadow-sm p-6 md:p-8">
+              <div className="mb-6">
+                <span className="uppercase tracking-[0.2em] text-[var(--accent)] text-[10px] font-semibold block">
                   Contact Form
                 </span>
-
-                <h2 className="text-3xl font-extrabold mt-3">
+                <h2 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 mt-1">
                   Send Us a Message
                 </h2>
-
-                <p className="text-slate-500 mt-3">
-                  We usually respond within 24 hours.
+                <p className="text-xs text-slate-500 mt-1 font-normal">
+                  Our team evaluates submissions and responds within 24 hours.
                 </p>
-
               </div>
 
-              <form className="space-y-6">
+              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="John Doe"
+                      className="w-full text-xs sm:text-sm border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-slate-400 transition-colors bg-slate-50/50"
+                    />
+                  </div>
 
-                <div>
-                  <label className="block font-semibold mb-2">
-                    Your Name
-                  </label>
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="john@example.com"
+                      className="w-full text-xs sm:text-sm border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-slate-400 transition-colors bg-slate-50/50"
+                    />
+                  </div>
+                </div>
 
-                  <input
-                    type="text"
-                    placeholder="John Doe"
-                    className="w-full border border-slate-200 rounded-xl px-5 py-4 focus:outline-none focus:border-[var(--primary)]"
-                  />
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                      Phone Number
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="+977 98XXXXXXXX"
+                      className="w-full text-xs sm:text-sm border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-slate-400 transition-colors bg-slate-50/50"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                      Subject Matter
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Internship,Training "
+                      className="w-full text-xs sm:text-sm border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-slate-400 transition-colors bg-slate-50/50"
+                    />
+                  </div>
                 </div>
 
                 <div>
-                  <label className="block font-semibold mb-2">
-                    Email Address
+                  <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                    Target Framework Track Interested In
                   </label>
-
-                  <input
-                    type="email"
-                    placeholder="john@example.com"
-                    className="w-full border border-slate-200 rounded-xl px-5 py-4"
-                  />
-                </div>
-
-                <div>
-                  <label className="block font-semibold mb-2">
-                    Phone Number
-                  </label>
-
-                  <input
-                    type="text"
-                    placeholder="+977 98XXXXXXXX"
-                    className="w-full border border-slate-200 rounded-xl px-5 py-4"
-                  />
-                </div>
-
-                <div>
-                  <label className="block font-semibold mb-2">
-                    Subject
-                  </label>
-
-                  <input
-                    type="text"
-                    placeholder="Project Consultation"
-                    className="w-full border border-slate-200 rounded-xl px-5 py-4"
-                  />
-                </div>
-
-                <div>
-                  <label className="block font-semibold mb-2">
-                    Service Interested In
-                  </label>
-
-                  <select className="w-full border border-slate-200 rounded-xl px-5 py-4">
-                    <option>Web Development</option>
-                    <option>Mobile App Development</option>
-                    <option>AI & ML Solutions</option>
-                    <option>Cloud Services</option>
-                    <option>Training Programs</option>
-                    <option>Internship Program</option>
+                  <select className="w-full text-xs sm:text-sm border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-slate-400 transition-colors bg-slate-50/50 appearance-none cursor-pointer">
+                    <option>Web Application Development</option>
+                    <option>Mobile App Ecosystem Development</option>
+                    <option>AI & Machine Learning Solutions</option>
+                    <option>Cloud Architecture Infrastructure</option>
+                    <option>Professional Training Programs</option>
+                    <option>Corporate Internship Programs</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block font-semibold mb-2">
-                    Message
+                  <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                    Message Description
                   </label>
-
                   <textarea
-                    rows={6}
-                    placeholder="Tell us about your project..."
-                    className="w-full border border-slate-200 rounded-xl px-5 py-4"
+                    rows={4}
+                    placeholder="Provide a brief summary of your tech stack requirements, user pathways, and production scope..."
+                    className="w-full text-xs sm:text-sm border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-slate-400 transition-colors bg-slate-50/50 resize-none"
                   />
                 </div>
 
                 <button
+                  type="submit"
                   className="
-                  w-full
-                  bg-[var(--primary)]
-                  hover:bg-[var(--accent)]
-                  text-white
-                  py-4
-                  rounded-xl
-                  flex
-                  items-center
-                  justify-center
-                  gap-3
-                  font-semibold
-                  transition
+                    w-full h-10 rounded-xl
+                    bg-[var(--primary-dark)] hover:bg-slate-800
+                    text-white text-xs font-semibold
+                    flex items-center justify-center gap-2
+                    transition-colors duration-200
+                    shadow-sm mt-2
                   "
                 >
-                  Send Inquiry
-                  <Send size={18} />
+                  Send
+                  <Send size={12} />
                 </button>
-
               </form>
             </div>
 
@@ -249,38 +215,33 @@ function RouteComponent() {
         </div>
       </section>
 
-      {/* ================= MAP ================= */}
-
-      <section className="pb-24">
+      {/* ================= GEOGRAPHIC GIS MAP EMBED ================= */}
+      <section className="pb-16 md:pb-20">
         <div className="max-w-7xl mx-auto px-6">
 
-          <div className="mb-8">
-            <h2 className="text-3xl font-extrabold">
-              Visit Our Office
+          <div className="mb-4">
+            <h2 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900">
+              Visit Our Technical Hub
             </h2>
-
-            <p className="text-slate-600 mt-2">
-              Itahari,Sunsari
+            <p className="text-xs text-slate-500 font-normal mt-0.5">
+              Itahari, Sunsari, Nepal
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-3xl shadow-lg">
+          <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-sm bg-slate-100">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3565.6223425416965!2d87.27426547550459!3d26.660571676798412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef6d8b1d73da1d%3A0xd4d57514869ca946!2sLunar%20IT%20Solution%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1780470037802!5m2!1sen!2sin"
+              src="https://maps.google.com/maps?q=Itahari,Sunsari&t=&z=13&ie=UTF8&iwloc=&output=embed"
               width="100%"
-              height="320"
+              height="300"
               loading="lazy"
-              className="border-0"
+              title="Lunar IT Location Map"
+              className="border-0 filter contrast-[0.95] grayscale-[0.1]"
             />
           </div>
 
         </div>
       </section>
 
-
-
-
-      
-
     </div>
+  )
 }

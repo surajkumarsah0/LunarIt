@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Globe,
   Smartphone,
@@ -5,7 +6,6 @@ import {
   Cloud,
   PenTool,
   Briefcase,
-  ArrowUpRight,
 } from "lucide-react";
 
 const services = [
@@ -49,15 +49,11 @@ const services = [
 
 export default function ServicesGrid() {
   return (
-    <section className="py-32 bg-slate-50">
+    <section className="pt-10 pb-16 bg-slate-50 overflow-hidden antialiased">
       <div className="max-w-7xl mx-auto px-6">
-
-      
-
-        {/* Grid */}
-
-        <div className="mt-20 grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-
+        
+        {/* Scaled Compact Grid Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => {
             const Icon = service.icon;
 
@@ -68,135 +64,96 @@ export default function ServicesGrid() {
                 group
                 relative
                 overflow-hidden
-
                 bg-white
-
-                rounded-[32px]
-
+                rounded-2xl
                 border
-                border-slate-200
-
-                p-8
-
+                border-slate-200/80
+                p-6
                 hover:border-[var(--primary)]
-                hover:shadow-2xl
-                hover:-translate-y-2
-
+                hover:shadow-xl
+                hover:-translate-y-1
                 transition-all
-                duration-500
+                duration-300
+                flex
+                flex-col
+                justify-between
                 "
               >
-
-                {/* Number */}
-
+                {/* Scaled Ambient Background Number Badge */}
                 <div
                   className="
                   absolute
-                  top-6
-                  right-6
-
-                  text-7xl
+                  top-4
+                  right-4
+                  text-5xl
                   font-black
-
-                  text-slate-100
-
+                  text-slate-100/70
                   group-hover:text-[var(--primary)]/10
-
-                  transition
+                  transition-colors
+                  duration-300
+                  select-none
+                  pointer-events-none
                   "
                 >
                   {service.number}
                 </div>
 
-                {/* Icon */}
-
-                <div
-                  className="
-                  w-16
-                  h-16
-
-                  rounded-2xl
-
-                  bg-[var(--primary)]/10
-
-                  flex
-                  items-center
-                  justify-center
-
-                  group-hover:bg-[var(--primary)]
-
-                  transition
-                  "
-                >
-                  <Icon
-                    size={28}
+                {/* Downscaled Core Visual Icon Container */}
+                <div>
+                  <div
                     className="
-                    text-[var(--primary)]
-                    group-hover:text-white
-                    transition
+                    w-12
+                    h-12
+                    rounded-xl
+                    bg-[var(--primary)]/10
+                    flex
+                    items-center
+                    justify-center
+                    group-hover:bg-[var(--primary)]
+                    transition-all
+                    duration-300
                     "
-                  />
+                  >
+                    <Icon
+                      size={20}
+                      className="
+                      text-[var(--primary)]
+                      group-hover:text-white
+                      transition-colors
+                      duration-300
+                      "
+                    />
+                  </div>
+
+                  {/* Tightened Text Content Layout Stack */}
+                  <h3 className="mt-5 text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
+                    {service.title}
+                  </h3>
+
+                  <p className="mt-2.5 text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
+                    {service.desc}
+                  </p>
                 </div>
 
-                {/* Content */}
-
-                <h3 className="mt-8 text-2xl font-bold">
-                  {service.title}
-                </h3>
-
-                <p className="mt-5 text-slate-600 leading-8">
-                  {service.desc}
-                </p>
-
-                {/* Link */}
-
-                <div
-                  className="
-                  mt-8
-
-                  flex
-                  items-center
-                  gap-2
-
-                  text-[var(--primary)]
-                  font-semibold
-                  "
-                >
-                  Learn More
-
-                  <ArrowUpRight
-                    size={18}
-                    className="
-                    group-hover:translate-x-1
-                    group-hover:-translate-y-1
-                    transition
-                    "
-                  />
-                </div>
-
-                {/* Bottom Accent */}
-
+                {/* Premium Base Accent Border Lane */}
                 <div
                   className="
                   absolute
                   bottom-0
                   left-0
-
-                  h-1
+                  h-[3px]
                   w-0
-
                   bg-[var(--accent)]
-
                   group-hover:w-full
-
                   transition-all
-                  duration-500
+                  duration-300
                   "
                 />
               </div>
             );
           })}
         </div>
+
       </div>
     </section>
   );

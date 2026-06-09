@@ -1,199 +1,188 @@
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link } from '@tanstack/react-router'
 import {
   Brain,
   Database,
   Code2,
   Palette,
   BarChart3,
-  Globe,
-  MessageSquare,
   ArrowRight,
-} from "lucide-react";
-
+  Clock,
+  Layers
+} from 'lucide-react'
 
 const programs = [
   {
-    title: "MERN Stack Development",
-    description:
-      "Learn modern full-stack web development using MongoDB, Express, React and Node.js.",
-    duration: "6 Months",
-    level: "Beginner to Advanced",
+    title: 'MERN Stack Development',
+    description: 'Learn modern full-stack web development using MongoDB, Express, React and Node.js.',
+    duration: '6 Months',
+    level: 'Beginner to Advanced',
     icon: Code2,
-    technologies: ["React", "Node.js", "MongoDB"],
+    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee",
+    technologies: ['React', 'Node.js', 'MongoDB'],
   },
   {
-    title: "Python Programming",
-    description:
-      "Master Python fundamentals, automation, APIs and backend development.",
-    duration: "3 Months",
-    level: "Beginner",
+    title: 'Python Programming',
+    description: 'Master Python fundamentals, automation, APIs and backend development.',
+    duration: '3 Months',
+    level: 'Beginner',
     icon: Code2,
-    technologies: ["Python", "Flask", "FastAPI"],
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5",
+    technologies: ['Python', 'Flask', 'FastAPI'],
   },
   {
-    title: "AI & Machine Learning",
-    description:
-      "Build intelligent systems using machine learning, deep learning and generative AI.",
-    duration: "6 Months",
-    level: "Intermediate",
+    title: 'AI & Machine Learning',
+    description: 'Build intelligent systems using machine learning, deep learning and generative AI.',
+    duration: '6 Months',
+    level: 'Intermediate',
     icon: Brain,
-    technologies: ["TensorFlow", "PyTorch", "OpenAI"],
+    image: "https://images.unsplash.com/photo-1677442136019-21780efad99a",
+    technologies: ['TensorFlow', 'PyTorch', 'OpenAI'],
   },
   {
-    title: "UI/UX Design",
-    description:
-      "Design modern digital experiences with user-centered design principles.",
-    duration: "4 Months",
-    level: "Beginner",
+    title: 'UI/UX Design',
+    description: 'Design modern digital experiences with user-centered design principles.',
+    duration: '4 Months',
+    level: 'Beginner',
     icon: Palette,
-    technologies: ["Figma", "Wireframing", "Prototyping"],
+    image: "https://images.unsplash.com/photo-1561070791-26c113006238",
+    technologies: ['Figma', 'Wireframing', 'Prototyping'],
   },
   {
-    title: "Data Science",
-    description:
-      "Analyze data, build predictive models and generate business insights.",
-    duration: "5 Months",
-    level: "Intermediate",
+    title: 'Data Science',
+    description: 'Analyze data, build predictive models and generate business insights.',
+    duration: '5 Months',
+    level: 'Intermediate',
     icon: Database,
-    technologies: ["Pandas", "NumPy", "Power BI"],
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+    technologies: ['Pandas', 'NumPy', 'Power BI'],
   },
   {
-    title: "Digital Marketing",
-    description:
-      "Learn SEO, social media marketing and growth strategies for modern businesses.",
-    duration: "3 Months",
-    level: "Beginner",
+    title: 'Digital Marketing',
+    description: 'Learn SEO, social media marketing and growth strategies for modern businesses.',
+    duration: '3 Months',
+    level: 'Beginner',
     icon: BarChart3,
-    technologies: ["SEO", "Meta Ads", "Google Ads"],
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+    technologies: ['SEO', 'Meta Ads', 'Google Ads'],
   },
-];
-
-
+]
 
 export default function TrainingPrograms() {
-  const navigate = useNavigate();
   return (
-    <section className="py- bg-slate-50">
+    <section className="py-16 md:py-20 bg-slate-50 text-slate-900 antialiased border-t border-slate-200/60">
       <div className="max-w-7xl mx-auto px-6">
-
-        {/* Cards */}
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mt-16">
+        {/* ================= ASYMMETRIC CARD GRID ================= */}
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
           {programs.map((program) => {
-            const Icon = program.icon;
-
+            const IconComponent = program.icon;
+            
             return (
               <div
                 key={program.title}
                 className="
                   group
+                  relative
+                  flex flex-col
                   bg-white
-                  rounded-3xl
+                  rounded-2xl
+                  overflow-hidden
                   border
-                  border-slate-200
-                  p-8
+                  border-slate-200/60
+                  shadow-sm
+                  hover:shadow-md
+                  hover:border-slate-300
                   transition-all
-                  duration-500
-                  hover:-translate-y-2
-                  hover:shadow-2xl
-                  hover:border-[var(--primary)]/30
+                  duration-300
                 "
               >
-                {/* Top */}
-                <div className="flex items-start justify-between">
-                  <div className="w-16 h-16 rounded-2xl bg-[var(--primary)]/10 flex items-center justify-center">
-                    <Icon
-                      size={32}
-                      className="text-[var(--primary)]"
-                    />
+                {/* 1/3 SPLIT IMAGE HEADER PANELS */}
+                <div className="relative h-44 w-full bg-slate-900 overflow-hidden shrink-0">
+                  <img
+                    src={`${program.image}?q=80&w=600&auto=format&fit=crop`}
+                    alt={program.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transform scale-[1.01] group-hover:scale-105 transition-transform duration-500 ease-out opacity-85"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+
+                  {/* FLOATING CONTEXT BADGES */}
+                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                    {/* Level Badge */}
+                    <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold uppercase tracking-wider bg-slate-950/60 text-white backdrop-blur-md border border-white/10">
+                      {program.level}
+                    </span>
+                    
+                    {/* Icon Container Badge */}
+                    <div className="p-1.5 rounded-md bg-white text-slate-900 shadow-sm">
+                      <IconComponent size={14} />
+                    </div>
                   </div>
 
-                  <span className="px-3 py-1 rounded-full bg-slate-100 text-sm font-medium">
-                    {program.level}
-                  </span>
+                  {/* BOTTOM FLOATING TECHNOLOGY LABELS */}
+                  <div className="absolute bottom-3 left-4 flex flex-wrap gap-1.5 max-w-[90%]">
+                    {program.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-0.5 text-[10px] font-medium rounded bg-white/20 text-white backdrop-blur-sm border border-white/10"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Content */}
-                <h3 className="mt-6 text-2xl font-bold">
-                  {program.title}
-                </h3>
+                {/* 2/3 CONTENT BLOCK BODY */}
+                <div className="p-5 flex flex-col flex-1 justify-between">
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 group-hover:text-[var(--accent)] transition-colors duration-200 tracking-tight">
+                      {program.title}
+                    </h3>
 
-                <p className="mt-4 text-slate-600 leading-7">
-                  {program.description}
-                </p>
+                    <p className="mt-2 text-xs text-slate-600 leading-relaxed font-normal line-clamp-3">
+                      {program.description}
+                    </p>
+                  </div>
 
-                {/* Meta */}
-                <div className="mt-6 flex items-center justify-between text-sm text-slate-500">
-                  <span>Duration</span>
-                  <span className="font-semibold text-slate-800">
-                    {program.duration}
-                  </span>
-                </div>
+                  {/* METRIC SPECS + ROUTE CTAS */}
+                  <div className="mt-5 pt-4 border-t border-slate-100">
+                    <div className="flex items-center justify-between text-[11px] text-slate-500 font-medium mb-4">
+                      <div className="flex items-center gap-1">
+                        <Clock size={12} className="text-slate-400" />
+                        <span>Duration: <strong className="text-slate-700 font-semibold">{program.duration}</strong></span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Layers size={12} className="text-slate-400" />
+                        <span>{program.technologies.length} Frameworks</span>
+                      </div>
+                    </div>
 
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mt-6">
-                  {program.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="
-                        px-3
-                        py-1
-                        rounded-full
-                        bg-slate-100
-                        text-sm
-                        text-slate-700
-                      "
+                    <Link
+                      to={`/coursedetails/${program.title
+                        .toLowerCase()
+                        .replace(/\s+/g, '-')}`}
+                      className="block w-full"
                     >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                      <button className="
+                        w-full h-9 rounded-xl
+                      bg-[var(--primary-dark)]
+                        text-white text-xs font-semibold
+                        flex items-center justify-center gap-1.5
+                        transition-colors duration-200
+                        shadow-sm
+                      ">
+                        Explore Curriculum
+                        <ArrowRight size={12} className="transform group-hover:translate-x-0.5 transition-transform duration-200" />
+                      </button>
+                    </Link>
+                  </div>
 
-                {/* Buttons */}
-                <div className="mt-8 flex gap-3">
-                 <Link to={`/coursedetails/${program.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                  <button
-                    className="
-                      flex-1
-                      h-11
-                      rounded-xl
-                      bg-[var(--primary)]
-                      text-white
-                      font-medium
-                      flex
-                      items-center
-                      justify-center
-                      gap-2
-                    "
-                  >
-                    View Details
-                    <ArrowRight size={16} />
-                  </button>
-                  </Link>
-
-                  <button
-                    className="
-                      flex-1
-                      h-11
-                      rounded-xl
-                      border
-                      border-slate-300
-                      font-medium
-                      flex
-                      items-center
-                      justify-center
-                      gap-2
-                      hover:bg-slate-50
-                    "
-                  >
-                    <MessageSquare size={16} />
-                    Enquiry
-                  </button>
                 </div>
               </div>
-            );
+            )
           })}
         </div>
+
       </div>
     </section>
-  );
+  )
 }

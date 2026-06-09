@@ -69,14 +69,14 @@ const Navbar = () => {
           {/* LOGO */}
           <a href="/" className="flex items-center shrink-0">
             <img
-              src="/images__1_-removebg-preview.png"
+              src="../../../public/lunarlogo.png"
               alt="Lunar IT Solution"
               className={`
                 w-auto
                 transition-all
                 duration-500
                 ease-out
-                ${scrolled ? "h-14" : "h-16 lg:h-20"}
+                ${scrolled ? "h-8" : "h-8 lg:h-10"}
               `}
             />
           </a>
@@ -151,7 +151,7 @@ const Navbar = () => {
                         "
                       >
                         <button
-                          onClick={() => navigate({ to: "/career/jobs" })}
+                          onClick={() => navigate({ to: "/job" })}
                           className="
                             block w-full text-left
                             px-5 py-3
@@ -163,7 +163,7 @@ const Navbar = () => {
                         </button>
 
                         <button
-                          onClick={() => navigate({ to: "/career/internship" })}
+                          onClick={() => navigate({ to: "/internship" })}
                           className="
                             block w-full text-left
                             px-5 py-3

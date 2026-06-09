@@ -21,14 +21,14 @@ const journey = [
 
 export default function LearningJourney() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const refs = useRef([]);
+  const refs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveIndex(Number(entry.target.dataset.index));
+            setActiveIndex(Number((entry.target as HTMLDivElement).dataset.index));
           }
         });
       },
@@ -40,30 +40,50 @@ export default function LearningJourney() {
   }, []);
 
   return (
-    <section className="py-20 md:py-28 bg-white overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section className="py-16 md:py-20 bg-white overflow-hidden text-slate-900 antialiased border-t border-slate-200/60">
+      <div className="max-w-6xl mx-auto px-6">
 
-        {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
-          <span className="uppercase tracking-[0.3em] text-sm font-semibold text-[var(--accent)]">
-            Learning Journey
-          </span>
+        {/* ================= HEADER BLOCK ================= */}
+        <div className="text-center max-w-2xl mx-auto mb-14 md:mb-16">
+             <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--accent)]"></span>
+            </span>
+            <span className="text-[var(--accent)] font-semibold uppercase tracking-wider text-xs sm:text-sm">
+              learning Journey
+            </span>
+          </div>
 
-          <h2 className="mt-4 text-3xl md:text-6xl font-extrabold tracking-tight">
-            Your Path To Success
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 leading-tight">
+            Your Path To{" "}
+            <span className="relative inline-block whitespace-nowrap px-1">
+              <span className="font-['Caveat',_cursive] text-[1.05em] font-semibold text-[var(--accent)] italic relative z-10 tracking-normal">
+                Success
+              </span>
+              <span className="absolute -bottom-1 left-0 w-full h-2.5 text-[var(--accent)] opacity-85 pointer-events-none select-none z-0">
+                <svg
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                  className="w-full h-full fill-none stroke-current stroke-[2.5px] stroke-linecap-round stroke-linejoin-round"
+                >
+                  <path d="M3,7 C20,2 40,3 60,5 C75,6.5 87,8 97,4 C92,7 65,9 40,8 C20,7 6,5 4,4" />
+                </svg>
+              </span>
+            </span>
           </h2>
 
-          <p className="mt-6 text-base md:text-lg text-slate-600 leading-7 md:leading-8">
+          <p className="mt-4 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-md mx-auto font-normal">
             A structured learning roadmap designed to take you from beginner to industry-ready professional.
           </p>
         </div>
 
-        {/* TIMELINE */}
+        {/* ================= TIMELINE TRACKS ================= */}
         <div className="relative">
 
-          {/* CURVED LINE (LEFT MOBILE + CENTER DESKTOP) */}
-          <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 h-full">
-            <svg className="h-full w-[70px] md:w-[160px]" viewBox="0 0 160 1400" preserveAspectRatio="none">
+          {/* CURVED TIMELINE VECTOR LINE PATH */}
+          <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 h-full pointer-events-none">
+            <svg className="h-full w-[40px] md:w-[120px]" viewBox="0 0 160 1400" preserveAspectRatio="none">
               <path
                 d="
                 M80 0
@@ -74,86 +94,97 @@ export default function LearningJourney() {
                 C20 1220,140 1300,80 1400
                 "
                 fill="none"
-                stroke="#e2e8f0"
-                strokeWidth="3"
-                strokeDasharray="10 10"
+                stroke="#f1f5f9"
+                strokeWidth="4"
+                strokeLinecap="round"
+              />
+              <path
+                d="
+                M80 0
+                C20 100,140 180,80 280
+                C20 380,140 460,80 560
+                C20 660,140 740,80 840
+                C20 940,140 1020,80 1120
+                C20 1220,140 1300,80 1400
+                "
+                fill="none"
+                stroke="#cbd5e1"
+                strokeWidth="2.5"
+                strokeDasharray="6 8"
+                strokeLinecap="round"
               />
             </svg>
           </div>
 
-          <div className="space-y-14 md:space-y-20">
-
+          <div className="space-y-10 md:space-y-16">
             {journey.map((step, index) => {
-              const Icon = step.icon;
+              const IconComponent = step.icon;
               const isLeft = index % 2 === 0;
               const isActive = activeIndex === index;
 
               return (
                 <div
                   key={step.number}
-                  ref={(el) => (refs.current[index] = el)}
+                  ref={(el) => { refs.current[index] = el; }}
                   data-index={index}
                   className="relative flex md:items-center justify-end"
                 >
-
-                  {/* CARD */}
+                  {/* DETAIL BOX MODULE */}
                   <div
                     className={`
-                      w-[80%] sm:w-[70%] md:w-[42%]
+                      w-[85%] sm:w-[75%] md:w-[44%]
                       ml-auto md:ml-0
                       ${isLeft ? "md:mr-auto" : "md:ml-auto"}
-                      transition-all duration-300
+                      transition-all duration-500 ease-out
                     `}
                   >
                     <div
                       className={`
-                        bg-white rounded-2xl md:rounded-3xl border p-5 md:p-8
-                        hover:shadow-xl hover:-translate-y-1 transition-all
-
+                        bg-white rounded-2xl border p-5 md:p-6
+                        transition-all duration-300
                         ${isActive
-                          ? "border-[var(--primary)] shadow-lg scale-[1.02]"
-                          : "border-slate-200"
+                          ? "border-[var(--accent)] shadow-md shadow-slate-100/80 scale-[1.01]"
+                          : "border-slate-200/60 shadow-sm"
                         }
                       `}
                     >
-
-                      <div className="flex items-center gap-3 md:gap-4">
+                      <div className="flex items-center gap-3.5">
                         <div
                           className={`
-                            w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition
+                            w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300
                             ${isActive
-                              ? "bg-[var(--primary)] text-white"
-                              : "bg-[var(--primary)]/10 text-[var(--primary)]"
+                              ? "bg-[var(--accent)] text-black"
+                              : "bg-slate-100 text-slate-700"
                             }
                           `}
                         >
-                          <Icon size={20} className="md:size-[22px]" />
+                          <IconComponent size={16} />
                         </div>
 
-                        <h3 className="text-lg md:text-2xl font-bold">
+                        <h3 className="text-sm sm:text-base font-bold text-slate-900 tracking-tight">
                           {step.title}
                         </h3>
                       </div>
 
-                      <p className="mt-3 md:mt-4 text-sm md:text-base text-slate-600 leading-6 md:leading-8">
+                      <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                         {step.description}
                       </p>
                     </div>
                   </div>
 
-                  {/* NUMBER (mobile small + desktop big center) */}
+                  {/* ACTIVE INDICATOR CHRONO INDEX PILL */}
                   <div
                     className={`
-                      absolute left-2 md:left-1/2 md:-translate-x-1/2
+                      absolute left-1.5 md:left-1/2 md:-translate-x-1/2
                       flex items-center justify-center font-bold
-                      border-2 md:border-4 border-white shadow-md transition-all
+                      border-4 border-white shadow-sm transition-all duration-300 select-none pointer-events-none
 
-                      w-7 h-7 text-xs rounded-full
-                      md:w-16 md:h-16 md:text-lg
+                      w-7 h-7 text-[10px] rounded-full
+                      md:w-11 md:h-11 md:text-xs
 
                       ${isActive
-                        ? "bg-[var(--primary)] text-white scale-110"
-                        : "bg-slate-200 text-slate-700"
+                        ? "bg-[var(--accent)] text-black scale-105"
+                        : "bg-slate-100 text-slate-500"
                       }
                     `}
                   >
@@ -163,9 +194,9 @@ export default function LearningJourney() {
                 </div>
               );
             })}
-
           </div>
         </div>
+
       </div>
     </section>
   );
